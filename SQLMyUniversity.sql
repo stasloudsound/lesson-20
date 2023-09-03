@@ -1,4 +1,4 @@
-﻿CREATE DATABASE MyUniversty
+﻿﻿CREATE DATABASE MyUniversty
 GO
 USE MyUniversty
  
@@ -454,10 +454,10 @@ WHERE Groups.Year = (5)
 --которые они читают (названия дисциплин и групп), 
 --причем отобрать только те лекции, которые читаются в аудитории “FSDM_1911_az”.
 
---SELECT Teachers.Name + ' ' + Teachers.Surname , Subjects.Name , Groups.Name FROM Groups, Teachers
---JOIN Lectures ON Lectures.TeacherId = Teachers.Id
---JOIN Subjects ON Lectures.SubjectId = Subjects.Id
---JOIN GroupsLectures ON GroupsLectures.GroupId = GroupId
-----JOIN GroupsLectures ON GroupsLectures.LectureId = LectureId
---WHERE Groups.Name = ('FSDM_1911_az')
---order by Teachers.Name + ' ' + Teachers.Surname + ' ' + Subjects.Name + Groups.Name
+SELECT Teachers.Name + ' ' + Teachers.Surname , Subjects.Name , Groups.Name FROM Teachers
+JOIN Lectures ON Lectures.TeacherId = Teachers.Id
+JOIN Subjects ON Lectures.SubjectId = Subjects.Id
+JOIN GroupsLectures ON GroupsLectures.LectureId = Lectures.Id 
+JOIN Groups ON GroupsLectures.GroupId = Groups.Id
+WHERE Groups.Name = ('FSDM_1911_az')
+order by Teachers.Name + ' ' + Teachers.Surname + ' ' + Subjects.Name + Groups.Name
